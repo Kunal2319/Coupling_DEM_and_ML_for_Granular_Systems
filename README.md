@@ -10,7 +10,7 @@ Bachelor's thesis project (Chemical Engineering, IIT Roorkee, 2024–25). I used
 | **Methods** | DEM simulation, orientation from rotation-matrix data, probability distribution curves, an anisotropy index, Random Forest regression |
 | **Stack** | Python, pandas, scikit-learn, matplotlib |
 | **Supervisor** | Prof. Anshu Anand, Department of Chemical Engineering, IIT Roorkee |
-| **Report** | [`docs/BTP_Report_Coupling_DEM_and_ML_for_Granular_Systems.pdf`](docs/BTP_Report_Coupling_DEM_and_ML_for_Granular_Systems.pdf) |
+| **Report** | [`docs/Bachelor's_Thesis_report_Kunal_Mishra.pdf`](docs/Bachelor's_Thesis_report_Kunal_Mishra.pdf) |
 
 ## What I found
 
