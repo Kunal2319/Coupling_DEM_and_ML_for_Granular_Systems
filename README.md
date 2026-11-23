@@ -71,4 +71,4 @@ For a quick test on a fraction of the rows, set `BTP_SAMPLE_FRAC=0.1`. To read t
 
 ## Contact
 
-**Kunal Mishra**, IIT Roorkee (Chemical Engineering) · [LinkedIn](https://www.linkedin.com/in/kunal-mishra-0b117a228/) · Portfolio: [add link]
+**Kunal Mishra**, IIT Roorkee (Chemical Engineering) · [LinkedIn](https://www.linkedin.com/in/kunal-mishra-0b117a228/) · Portfolio: [https://kunal-mishra.vercel.app/]
