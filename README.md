@@ -23,16 +23,43 @@
 
 ## 2. Motivation
  
-Particle orientation controls packing density, flow resistance, mixing and heat/mass transfer in granular beds, and matters for filtration, compaction, reactors and crystallisation-like ordering. Most prior work on orientation (e.g. Marek, Niegodajew and co-authors) addresses cylinders in static packed beds. Elliptical cylinders under vibration are less studied. This project asks:
+
+Granular systems, consisting of discrete particles, are widely used in various engineering and industrial processes.Particle orientation controls packing density, flow resistance, mixing and heat/mass transfer in granular beds, and matters for filtration, compaction, reactors and crystallisation-like ordering. Similarly, the aspect ratio directly affects its ability to rotate, stack, and form stable configurations within the system. Most prior work on orientation (e.g. Marek, Niegodajew and co-authors) addresses cylinders in static packed beds. Elliptical cylinders under vibration are less studied. This project asks:
  
 1. How does aspect ratio change the orientation distribution of particles in a vibrated bed?
 2. How does ordering (anisotropy) vary with height in the bed?
 3. Can a cheap ML model recover local orientation from position and shape, avoiding rerunning expensive DEM?
 
+## 3. Methodology
+ 
+###  DEM simulation
+- Elliptical cylindrical particles in a vibrating bed, sampled at three stages: **initial, mid-simulation, steady state**.
+- Simulations repeated for AR ∈ {0.5, 0.75, 1, 2, 3, 4, 6, 8, 10}.
+- Per-particle output: position (x, y, z) and a 3×3 rotation tensor (`TENSOR_0` … `TENSOR_8`).
+- Governing equations (translation and rotation per particle):
+  `m_i dV_i/dt = Σ_j (F^n_ij + F^t_ij) + F^l_ij + m_i g`,  `I_i dω_i/dt = Σ_j T_ij`
+
+###  Orientation extraction
+A Python script converts each particle's rotation tensor into an orientation angle (0–180°) relative to the reference axis, for each stage. Results are tabulated per particle (Excel/CSV) for statistics and plotting.
+ ![Orientation probability distribution](figures/orientation_probability_distribution.png)
+ A glimpse of how particle orientation data obtained from DEM simulation and Analysis looks
+ 
+###  Distribution analysis
+- Frequency histograms of orientation at each stage.
+- 1° binned probability distributions for each AR.
+- Mean and variance of orientation as a function of AR.
+
+###  Anisotropy analysis
+- A second-order **orientation distribution tensor** is built from particle orientations.
+- **Anisotropy index** = λmax − λmin of that tensor (0 is isotropic; higher means more aligned).
+- Computed in bins along z to give anisotropy-vs-height profiles for each AR.
+
+
 ## What I found
 
 **Simulation study (the main result of the thesis).**
 - Particles near AR ≈ 1 show a single dominant orientation peak (roughly 70–85°). As the aspect ratio rises above about 3, a second peak appears, and elongated particles (AR 4–10) have a more spread-out, less uniform orientation distribution.
+- Mean orientation is roughly flat (~73°) up to AR ≈ 2.5, then falls to ~56° at AR = 8 while variance rises to ~1700 deg². AR = 10 shows a partial reversal, which can be attributed to packing constraints or saturation.
 - An anisotropy index (the difference between the largest and smallest eigenvalues of the orientation distribution) rises with aspect ratio and changes with height in the bed, with boundary effects visible near the bottom and the top.
 
 | | |
