@@ -41,8 +41,8 @@ Granular systems, consisting of discrete particles, are widely used in various e
 
 ###  Orientation extraction
 A Python script converts each particle's rotation tensor into an orientation angle (0–180°) relative to the reference axis, for each stage. Results are tabulated per particle (Excel/CSV) for statistics and plotting.
- ![Orientation probability distribution](figures/orientation_probability_distribution.png)
- A glimpse of how particle orientation data obtained from DEM simulation and Analysis looks
+ ![Orientation probability distribution](figures/Sample_data_DEM.png)
+           A glimpse of how particle orientation data obtained from DEM simulation and Analysis looks
  
 ###  Distribution analysis
 - Frequency histograms of orientation at each stage.
