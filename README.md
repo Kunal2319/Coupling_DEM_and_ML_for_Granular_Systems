@@ -1,7 +1,8 @@
 # Coupling DEM and Machine Learning for Granular Systems
 
-Bachelor's thesis project (Chemical Engineering, IIT Roorkee, 2024–25). I used Discrete Element Method (DEM) simulations to study how the shape of elongated particles changes their alignment in a vibrated bed, and trained a Random Forest to predict a particle's orientation from its position and aspect ratio.
+**Bachelor's thesis project (Chemical Engineering, IIT Roorkee, 2024–25).** I used Discrete Element Method (DEM) simulations to study how the shape of elongated particles changes their alignment in a vibrated bed, and trained a Random Forest to predict a particle's orientation from its position and aspect ratio.
 
+## 1. At a glance
 | | |
 |---|---|
 | **Question** | How does particle aspect ratio shape the orientation distribution in a vibrated granular bed, and how much of a particle's orientation can be predicted from where it is and how elongated it is? |
@@ -11,6 +12,22 @@ Bachelor's thesis project (Chemical Engineering, IIT Roorkee, 2024–25). I used
 | **Stack** | Python, pandas, scikit-learn, matplotlib |
 | **Supervisor** | Prof. Anshu Anand, Department of Chemical Engineering, IIT Roorkee |
 | **Report** | [`docs/Bachelor's_Thesis_Report_Kunal_Mishra.pdf`](docs/Bachelor's_Thesis_Report_Kunal_Mishra.pdf) |
+
+
+## TL;DR
+ 
+- Ran DEM simulations of elliptical cylinders under vibration across **aspect ratios (AR) 0.5 to 10**, and extracted per-particle orientation from the rotation-tensor output.
+- Characterised orientation with **probability distribution curves**, an **orientation distribution tensor**, and an **anisotropy index** (λmax − λmin), resolved along the bed height (z).
+- Observed that the orientation distribution changes from a single broad peak (AR ≈ 1) to a **bimodal** shape at high AR (≥ 6, clearest at AR = 10).
+- Trained a **Random Forest** on ~3.08 M particle records to predict orientation from (x, y, z, AR): **R² = 0.69** (standard), and **83% of predictions within ±35%** of the true angle.
+
+## 2. Motivation
+ 
+Particle orientation controls packing density, flow resistance, mixing and heat/mass transfer in granular beds, and matters for filtration, compaction, reactors and crystallisation-like ordering. Most prior work on orientation (e.g. Marek, Niegodajew and co-authors) addresses cylinders in static packed beds. Elliptical cylinders under vibration are less studied. This project asks:
+ 
+1. How does aspect ratio change the orientation distribution of particles in a vibrated bed?
+2. How does ordering (anisotropy) vary with height in the bed?
+3. Can a cheap ML model recover local orientation from position and shape, avoiding rerunning expensive DEM?
 
 ## What I found
 
