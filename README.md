@@ -76,7 +76,7 @@ A Python script converts each particle's rotation tensor into an orientation ang
 
 The tolerance metric is a custom, forgiving accuracy measure, not an R² score. It is reported because small angular errors are physically acceptable in semi-ordered beds. The standard R² is the stricter number and is reported alongside it.
 
-Figures (histograms, PDFs, anisotropy profiles, 3D scatter) are in the full report: report/BTP_Report.pdf
+Figures (histograms, PDFs, anisotropy profiles, 3D scatter) are in the full report: [`docs/Bachelor's_Thesis_Report_Kunal_Mishra.pdf`](docs/Bachelor's_Thesis_Report_Kunal_Mishra.pdf).
 
 ## 5. Limitations (what I would do differently now)
 
@@ -102,8 +102,8 @@ Figures (histograms, PDFs, anisotropy profiles, 3D scatter) are in the full repo
 │   └── BTP_Orientation_Prediction.ipynb   
 ├── figures/                                # selected figures from the report
 ├── docs/
-│   └── BTP_Report_...pdf                   # full thesis report
-└── data/                                   
+│   └── Bachelor's_Thesis...pdf             # full thesis report
+└── data/                                   # put the particle CSV files here
 ```
 
 ## Running it
@@ -114,7 +114,6 @@ pip install -r requirements.txt
 jupyter notebook notebooks/BTP_Orientation_Prediction.ipynb
 ```
 
-For a quick test on a fraction of the rows, set `BTP_SAMPLE_FRAC=0.1`. To read the data from another folder, set `BTP_DATA_DIR`.
 
 ## Contact
 
