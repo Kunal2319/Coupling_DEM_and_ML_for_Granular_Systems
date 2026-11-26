@@ -55,7 +55,7 @@ A Python script converts each particle's rotation tensor into an orientation ang
 - Computed in bins along z to give anisotropy-vs-height profiles for each AR.
 
 
-## What I found
+## 4. What I found
 
 **Simulation study (the main result of the thesis).**
 - Particles near AR ≈ 1 show a single dominant orientation peak (roughly 70–85°). As the aspect ratio rises above about 3, a second peak appears, and elongated particles (AR 4–10) have a more spread-out, less uniform orientation distribution.
@@ -74,19 +74,22 @@ A Python script converts each particle's rotation tensor into an orientation ang
 | R² | **0.69** |
 | Share of predictions within ±35% of the true angle | **0.83** |
 
-A correction, since it matters when reading the report: the report's table lists "R² Score 0.833". That number is the **within-±35%** figure above, which my notebook computed with a function named `r2_with_tolerance`. The R² of the same model is 0.69. The notebook in this repository reports each metric under its real name.
+The tolerance metric is a custom, forgiving accuracy measure, not an R² score. It is reported because small angular errors are physically acceptable in semi-ordered beds. The standard R² is the stricter number and is reported alongside it.
 
-## Limitations (what I would do differently now)
+Figures (histograms, PDFs, anisotropy profiles, 3D scatter) are in the full report: report/BTP_Report.pdf
 
-- **Random split.** Particles from the same simulation share a stage, a shape and a spatial layout, so a random split lets the model see near-copies of its test particles. The 0.69 is probably optimistic. The notebook adds a grouped split that holds out whole simulation files, and a "predict the mean" baseline for comparison.
-- **The tolerance metric is weak.** Orientation is an angle on 0–180°, where 0° and 180° are the same alignment, but a relative error `|y − ŷ|/y` treats them as far apart, and it depends on the size of the true angle. The notebook also reports a wrap-around (circular) error.
-- **Tree depth.** The report lists a maximum depth of 30. The notebook uses scikit-learn's default depth, and this repository follows the notebook.
+## 5. Limitations (what I would do differently now)
+
+- **Random split.** Particles from the same simulation share a stage, a shape and a spatial layout, so a random split lets the model see near-copies of its test particles. The 0.69 is probably optimistic.
+- **Interpretation is qualitative.** The "critical AR" for bimodality is read off plots and has not been located with a quantitative order parameter or finite-size analysis.
+- **Baselines missing.** No comparison against simple baselines (e.g., predicting the per-AR mean, k-NN, gradient boosting) or tuned hyperparameters.
+- **Single simulation setup per AR.** No replicate runs or varied vibration parameters, so run-to-run variability and uncertainty bounds are not quantified.
 - **Importances.** Impurity-based feature importances can favour continuous variables. A permutation importance on held-out files would be a better check.
 
-## Ideas for continuing
+## 6. Ideas for continuing or Future Work
 
 - Predict `(sin 2θ, cos 2θ)` instead of the raw angle so the wrap-around is respected, and predict the whole orientation distribution rather than single angles.
-- Evaluate on held-out aspect ratios (can the model generalise to a shape it has not seen?) and held-out stages.
+- Evaluate on held-out aspect ratios (can the model generalise to a shape it has not seen?) and held-out stages (e.g., train on AR ≤ 6, test on AR = 8 and 10).
 - Add contact and neighbour features (local density, number of contacts) instead of position alone.
 
 ## Repository layout
@@ -96,11 +99,11 @@ A correction, since it matters when reading the report: the report's table lists
 ├── README.md
 ├── requirements.txt
 ├── notebooks/
-│   └── BTP_Orientation_Prediction.ipynb   # loading, cleaning, original split, grouped split, baseline, importances
+│   └── BTP_Orientation_Prediction.ipynb   
 ├── figures/                                # selected figures from the report
 ├── docs/
 │   └── BTP_Report_...pdf                   # full thesis report
-└── data/                                   # put the DEM CSV files here (not tracked)
+└── data/                                   
 ```
 
 ## Running it
