@@ -100,7 +100,7 @@ Figures (histograms, PDFs, anisotropy profiles, 3D scatter) are in the full repo
 ├── requirements.txt
 ├── notebooks/
 │   └── BTP_Orientation_Prediction.ipynb   
-├── figures/                                # selected figures from the report
+├── figures/                                
 ├── docs/
 │   └── Bachelor's_Thesis...pdf             # full thesis report
 └── data/                                   # put the particle CSV files here
@@ -110,11 +110,11 @@ Figures (histograms, PDFs, anisotropy profiles, 3D scatter) are in the full repo
 
 ```bash
 pip install -r requirements.txt
-# put the particle CSV files in data/  (columns: Points:0, Points:1, Points:2, aspect_ratio, Orientation)
+# put the particle CSV files in data/ 
 jupyter notebook notebooks/BTP_Orientation_Prediction.ipynb
 ```
 
 
 ## Contact
 
-**Kunal Mishra**, IIT Roorkee (Chemical Engineering) · [LinkedIn](https://www.linkedin.com/in/kunal-mishra-0b117a228/) · [Portfolio](https://kunal-mishra.vercel.app/)
+**Kunal Mishra**, IIT Roorkee (Chemical Engineering) · kunalmishra1923@gmail.com · [LinkedIn](https://www.linkedin.com/in/kunal-mishra-0b117a228/) · [Portfolio](https://kunal-mishra.vercel.app/)
